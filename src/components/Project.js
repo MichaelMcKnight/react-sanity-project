@@ -35,7 +35,7 @@ export default function Project() {
                         <section>
                             { projectData && projectData.map((project, index) => (
                                 <div className="project" key={ index }>
-                                    <a target="_blank" rel="noreferrer" href={ project.link }>
+                                    <a target="_blank" rel="noreferrer noopener" href={ project.link }>
                                         <img src={ project.mainImage.asset.url } alt={ project.mainImage.alt } />
                                     </a>
                                     <h2 className="mt-4">{ project.title }</h2>
