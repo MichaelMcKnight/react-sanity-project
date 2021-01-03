@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import sanityClient from '../client';
-import imageUrlBuilder from '@sanity/image-url';
 import BlockContent from '@sanity/block-content-to-react';
 
 export default function SinglePost() {
-    const [singlePostData, setSinglePostData] = useState(null);
+    const [singlePost, setSinglePost] = useState(null);
     const { slug } = useParams();
-
-    const builder = imageUrlBuilder(sanityClient);
-    function urlFor(source) {
-        return builder.image(source);
-    }
 
     useEffect(() => {
         sanityClient.fetch(`*[slug.current == "${slug}"]
@@ -27,20 +21,26 @@ export default function SinglePost() {
             },
             body,
         }`)
-        .then((data) => setSinglePostData(data[0]))
+        .then((data) => setSinglePost(data[0]))
         .catch(console.error);
     }, [slug]);
 
-    if (!singlePostData) return <div>Loading...</div>;
+    if (!singlePost) return <div>Loading...</div>;
 
     return (
-        <main>
+        <main className="px-3 py-5">
             <div className="container">
-                <article>
-                    <div>
-                        <BlockContent blocks={singlePostData.body} id="dt1c3017" dataset="production" />
+                <div className="row justify-content-center">
+                    <div className="col-12 col-md-8">
+                        <article>
+                            <img className="mb-4" src={ singlePost.mainImage.asset.url } alt={ singlePost.title } />
+                            <h2>{ singlePost.title }</h2>
+                            <div>
+                                <BlockContent blocks={ singlePost.body } id="dt1c3017" dataset="production" />
+                            </div>
+                        </article>
                     </div>
-                </article>
+                </div>
             </div>
         </main>
     )

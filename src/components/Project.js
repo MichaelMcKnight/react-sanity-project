@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import sanityClient from '../client';
+import BlockContent from '@sanity/block-content-to-react';
 
 export default function Project() {
     const [projectData, setProjectData] = useState(null);
@@ -26,14 +27,26 @@ export default function Project() {
 
     return (
         <main>
-            <div className="container">
-                <h1>Projects</h1>
-                <h2>This page houses my projects. I created this page to expand my knowledge of schemas. I created a new schema specifically for this page to pull from the projects section of the backend in Sanity.</h2>
-                <section>
-                    { projectData && projectData.map((project, index) => (
-                        <img src={ project.mainImage.asset.url } alt={ project.mainImage.alt } />
-                    ))};
-                </section>
+            <div className="container px-3 py-5">
+                <div className="row justify-content-center">
+                    <div className="col-12 col-md-8">
+                        <h1>Projects</h1>
+                        <p>There is only one project here... my portfolio site! You can view other projects there. I created this page specifically to advance my knowledge of creating schema files to create new backend features in Sanity.io and pull data to the front-end. Click the image to go to my portfolio. ✌️</p>
+                        <section>
+                            { projectData && projectData.map((project, index) => (
+                                <div className="project" key={ index }>
+                                    <a target="_blank" rel="noreferrer" href={ project.link }>
+                                        <img src={ project.mainImage.asset.url } alt={ project.mainImage.alt } />
+                                    </a>
+                                    <h2 className="mt-4">{ project.title }</h2>
+                                    <div className="body">
+                                        <BlockContent blocks={ project.body } id="dt1c3017" dataset="production" />
+                                    </div>
+                                </div>
+                            ))}
+                        </section>
+                    </div>
+                </div>
             </div>
         </main>
     )

@@ -16,24 +16,19 @@ export default function Navbar() {
                 <nav className="navigation-menu">
                     <NavLink to='/' 
                     exact 
-                    activeClassName=""
+                    activeClassName="active"
                     className="white-txt uppercase p-3">
                         Home
                     </NavLink>
                     <NavLink to='/post'
-                    activeClassName=""
+                    activeClassName="active"
                     className="white-txt uppercase p-3">
                         Blog Posts
                     </NavLink>
                     <NavLink to='/project'
-                    activeClassName=""
+                    activeClassName="active"
                     className="white-txt uppercase p-3"> 
                         Projects
-                    </NavLink>
-                    <NavLink to="/about"
-                    activeClassName=""
-                    className="white-txt uppercase p-3">
-                        About Me
                     </NavLink>
                 </nav>
                 <div id="burger-nav" role="button" onClick={ burgerNav } >
@@ -42,27 +37,22 @@ export default function Navbar() {
                     <span></span>
                     <span></span>
                 </div> 
-                <nav className="mobile-menu">
-                    <NavLink to='/' 
+                <nav className="mobile-menu d-flex flex-column justify-content-center align-items-center">
+                    <NavLink onClick={ burgerNav } to='/' 
                     exact 
-                    activeClassName=""
+                    activeClassName="active"
                     className="white-txt uppercase p-3">
                         Home
                     </NavLink>
-                    <NavLink to='/post'
-                    activeClassName=""
+                    <NavLink onClick={ burgerNav } to='/post'
+                    activeClassName="active"
                     className="white-txt uppercase p-3">
                         Blog Posts
                     </NavLink>
-                    <NavLink to='/project'
-                    activeClassName=""
+                    <NavLink onClick={ burgerNav } to='/project'
+                    activeClassName="active"
                     className="white-txt uppercase p-3"> 
                         Projects
-                    </NavLink>
-                    <NavLink to="/about"
-                    activeClassName=""
-                    className="white-txt uppercase p-3">
-                        About Me
                     </NavLink>
                 </nav>
                 <a href="https://reactjs.org/" target="_blank" rel="noreferrer">

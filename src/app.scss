@@ -49,6 +49,7 @@ body{
 
 a{
     text-decoration: none;
+    color: #aaa;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -80,7 +81,7 @@ h4{
 }
 
 main{
-    min-height: 80vh;
+    min-height: 90vh;
 }
 
 p{
@@ -225,6 +226,16 @@ textarea{
     }
 }
 
+.light-grey-bg{
+    background-color: #eee;
+}
+
+.blog-post{
+    background-color: #fff;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+
 .vid-wrap{
     position: relative;
     padding-bottom: 56.25%;
@@ -245,14 +256,11 @@ textarea{
     @include md-screen{
         display: block;
     }
-    .menu{
-        display: flex;
-        .menu-item{
-            list-style: none;
-            margin: 0px 15px;
-            a{
-                color: #fff;
-            }
+    a{
+        color: #fff;
+        &.active{
+            color: #61DBFB;
+            font-weight: bold;
         }
     }
 }
@@ -320,21 +328,17 @@ textarea{
     background-color: rgba(0,0,0,0.8);
     position: absolute;
     z-index: 998;
+    top: 0px;
     left: -100%;
     transition: all 350ms ease-in-out;
     &.open{
         left: 0px;
     }
-    .menu{
-        width: 80%;
-        padding: 0px 5%;
-        margin: 100px auto 0px;
-        .menu-item{
-            list-style: none;
-            margin: 15px 0px;
-            a{
-                color: #fff;
-            }
+    a{
+        color: #fff;
+        &.active{
+            color: #61DBFB;
+            font-weight: bold;
         }
     }
 }
